@@ -1,0 +1,12 @@
+from django.shortcuts import redirect
+from django.http import HttpResponse
+from .forms import NewUserForm
+from django.views.generic import CreateView
+
+class RegisterView(CreateView):
+  template_name = "register.html"
+  form_class = NewUserForm
+
+  def form_valid(self, form):
+      form.save()
+      return redirect('login')

@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Unfold &mdash; A onepage portfolio HTML template by Colorlib</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="description" content="">
+    <meta name="keywords" content="html, css, javascript, jquery">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href= '{% static "css/vendor/icomoon/style.css" %}'>
+    <link rel="stylesheet" href= '{% static "css/vendor/owl.carousel.min.css" %}'>
+    <link rel="stylesheet" href= '{% static "css/vendor/animate.min.css"  %}'>
+    <link rel="stylesheet" href= '{% static "css/vendor/aos.css"  %}'>
+    <link rel="stylesheet" href= '{% static "css/vendor/bootstrap.min.css"  %}'>
+    <link rel="stylesheet" href= '{% static "css/vendor/jquery.fancybox.min.css"  %}'>
+    
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" href= '{% static "css/style.css" %}'>
+  </head>
+  <body>
+    {% if request.user.is_authenticated %}
+    <a href="{% url 'logout' %}" class="btn btn-link">Cerrar Session</a>
+    {% endif %}
+
+    <div class="container">{% block content %} {% endblock content %}</div>
+
+    <script src='{% static "js/scripts-dist.js" %}'></script>
+    <script src='{% static "js/main.js" %}'></script>
+  
+  </body>
+</html>
