@@ -82,6 +82,18 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'railway',
+        'PORT': '5501',
+        'HOST': 'containers-us-west-119.railway.app',
+        'USER': 'root',
+        'PASSWORD': 'sh3OTwzlgEpKv6WWLePx',
+    }
+}
+
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'proyectou4',
         'PORT': '3306',
         'HOST': '127.0.0.1',
@@ -89,6 +101,7 @@ DATABASES = {
         'PASSWORD': 'root',
     }
 }
+'''
 
 
 # Password validation
