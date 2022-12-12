@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render
 from django.views.generic import FormView, CreateView
 from .models import *
 from .forms import *
+import datetime
 # Create your views here.
 
 def index(request):
@@ -12,16 +13,26 @@ def portfolio_create(request):
     form = PortfolioForm
     context = {'portfolio': portfolio, 'form': form}
     if request.method == 'POST':
-        print(request.POST)
         form = PortfolioForm(request.POST, request.FILES)
         print(form)
         if form.is_valid():
-            print('Hola MUNDOOOOOOO')
             form.save()
         else:
-            print('No entraaaaa')
+            print('Error when you try to create a portfolio')
     
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[-1].strip()
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    try:
+        IpAddress.objects.get(ip_address=ip)
+    except IpAddress.DoesNotExist:             #-----Here My Edit
+        ip_address = IpAddress(ip_address=ip, pub_date=datetime.datetime.now())
+        ip_address.save()
+
     return render(request, 'portfolio.html', context)
+
 
 '''class RegisterView(CreateView):
   template_name = "register.html"
