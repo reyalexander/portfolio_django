@@ -4,7 +4,7 @@ from .forms import NewUserForm
 from django.views.generic import CreateView
 
 class RegisterView(CreateView):
-  template_name = "register.html"
+  template_name = "registration/register.html"
   form_class = NewUserForm
 
   def form_valid(self, form):
