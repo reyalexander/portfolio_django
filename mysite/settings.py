@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -105,8 +106,15 @@ DATABASES = {
         'PASSWORD': 'root',
     }
 }
-
 '''
+DATABASES = {
+    "default": dj_database_url.config(
+        default="sqlite:///db.sqlite3", 
+        conn_max_age=600
+    )
+}
+
+
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -157,3 +165,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 #CORS_ALLOWED_ORIGINS = ['localhost:5500']
+
