@@ -16,14 +16,11 @@ import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-DEBUG = 'RENDER' not in os.environ
+
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 #STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
@@ -32,13 +29,20 @@ if not DEBUG:
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-#-s@u=v%2c6qwxn0%br(!)sl7by^3s82q4y_&t+iy&(z3_h)(j'
+SECRET_KEY = os.environ.get("SECRET_KEY", "235ds3rwfe3qrfesr")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = ["*"]
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+ALLOWED_HOSTS = []
+
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 # Application definition
 
@@ -112,14 +116,14 @@ DATABASES = {
         'PASSWORD': 'root',
     }
 }
-
+'''
 DATABASES = {
     "default": dj_database_url.config(
         default="sqlite:///db.sqlite3", 
         conn_max_age=600
     )
 }
-'''
+
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -165,7 +169,7 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#CSRF_TRUSTED_ORIGINS = ['https://portfoliodjango-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS=['https://portfolio-alexanderrey.onrender.com/']
 
-#CORS_ALLOWED_ORIGINS = ['localhost:5500']
+CORS_ALLOWED_ORIGINS = True
 
