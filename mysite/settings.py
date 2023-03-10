@@ -162,7 +162,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #CSRF_TRUSTED_ORIGINS = ['https://portfoliodjango-production.up.railway.app']
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
-
 #CORS_ALLOWED_ORIGINS = ['localhost:5500']
 
