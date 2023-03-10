@@ -94,7 +94,7 @@ DATABASES = {
     }
 }
 
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -106,7 +106,7 @@ DATABASES = {
     }
 }
 
-
+'''
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -152,7 +152,7 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CSRF_TRUSTED_ORIGINS = ['https://portfoliodjango-production.up.railway.app']
+#CSRF_TRUSTED_ORIGINS = ['https://portfoliodjango-production.up.railway.app']
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
