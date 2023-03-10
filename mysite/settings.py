@@ -169,7 +169,7 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CSRF_TRUSTED_ORIGINS=['https://portfolio-alexanderrey.onrender.com/']
+CSRF_TRUSTED_ORIGINS=['https://portfolio-alexander.onrender.com']
 
 CORS_ALLOWED_ORIGINS = True
 
