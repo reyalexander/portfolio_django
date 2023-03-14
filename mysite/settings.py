@@ -38,11 +38,11 @@ if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
-RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+'''RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)'''
 
 # Application definition
 
@@ -92,20 +92,21 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-'''
+
+# mysql -hcontainers-us-west-81.railway.app -uroot -prTlLLK2S72gdoGH22x3a --port 6063 --protocol=TCP railway
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'railway',
-        'PORT': '5501',
-        'HOST': 'containers-us-west-119.railway.app',
+        'PORT': '6063',
+        'HOST': 'containers-us-west-81.railway.app',
         'USER': 'root',
-        'PASSWORD': 'sh3OTwzlgEpKv6WWLePx',
+        'PASSWORD': 'prTlLLK2S72gdoGH22x3a',
     }
 }
 
 
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -116,7 +117,7 @@ DATABASES = {
         'PASSWORD': 'root',
     }
 }
-'''
+
 
 #DATABASE_URL
 DATABASES = {
@@ -125,7 +126,7 @@ DATABASES = {
         conn_health_checks=True
     )
 }
-
+'''
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -171,7 +172,7 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CSRF_TRUSTED_ORIGINS=['https://portfolio-alexander.onrender.com']
+#CSRF_TRUSTED_ORIGINS=['*']
 
-CORS_ALLOWED_ORIGINS = True
+
 
