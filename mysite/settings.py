@@ -16,32 +16,18 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
-
-#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
-
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY", "235ds3rwfe3qrfesr")
+SECRET_KEY = 'django-insecure-3^2_l&muhp6%e%@y+q-q(u#*(t3(2892kg*5*lza%+81ojd!kp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+ALLOWED_HOSTS = ["localhost", "movie-api-django-production.up.railway.app"]
 
-ALLOWED_HOSTS = ["*"]
-
-'''RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)'''
+CSRF_TRUSTED_ORIGINS = ["https://movie-api-django-production.up.railway.app"]
 
 # Application definition
 
@@ -97,10 +83,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'railway',
-        'PORT': '6063',
-        'HOST': 'containers-us-west-81.railway.app',
+        'PORT': '7775',
+        'HOST': 'containers-us-west-140.railway.app',
         'USER': 'root',
-        'PASSWORD': 'prTlLLK2S72gdoGH22x3a',
+        'PASSWORD': '2Ba9oHUHL4mpugXi2yoZ',
     }
 }
 
@@ -162,6 +148,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 MEDIA_ROOT = 'media'
 
 MEDIA_URL = '/media/'
@@ -170,8 +160,3 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-#CSRF_TRUSTED_ORIGINS=['*']
-
-
-
