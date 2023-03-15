@@ -96,7 +96,6 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 # mysql -hcontainers-us-west-81.railway.app -uroot -prTlLLK2S72gdoGH22x3a --port 6063 --protocol=TCP railway
 
-'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -120,7 +119,7 @@ DATABASES = {
         'PASSWORD': 'root',
     }
 }
-
+'''
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
