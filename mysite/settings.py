@@ -13,21 +13,28 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.9/howto/static-files/
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
 
-
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3^2_l&muhp6%e%@y+q-q(u#*(t3(2892kg*5*lza%+81ojd!kp'
+SECRET_KEY = 'django-insecure-#-s@u=v%2c6qwxn0%br(!)sl7by^3s82q4y_&t+iy&(z3_h)(j'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "movie-api-django-production.up.railway.app"]
+ALLOWED_HOSTS = ['127.0.0.1',"localhost", "portfoliodjango-production.up.railway.app"]
 
-CSRF_TRUSTED_ORIGINS = ["https://movie-api-django-production.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = ["https://portfoliodjango-production.up.railway.app"]
 
 # Application definition
 
@@ -38,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'whitenoise.runserver_nostatic',
     'corsheaders',
     'portfolio.apps.PortfolioConfig',
     'users.apps.UsersConfig'
@@ -78,6 +86,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+
 # mysql -hcontainers-us-west-81.railway.app -uroot -prTlLLK2S72gdoGH22x3a --port 6063 --protocol=TCP railway
 DATABASES = {
     'default': {
@@ -102,7 +111,6 @@ DATABASES = {
         'PASSWORD': 'root',
     }
 }
-
 
 #DATABASE_URL
 DATABASES = {
@@ -146,9 +154,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
