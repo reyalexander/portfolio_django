@@ -41,7 +41,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1',"localhost", "portfoliodjango-production.up.railway.app"]
 
-CSRF_TRUSTED_ORIGINS = ["https://portfoliodjango-production.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = ["https://portfoliodjango-production.up.railway.app/"]
 
 # Application definition
 
